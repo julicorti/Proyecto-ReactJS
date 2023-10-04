@@ -3,7 +3,7 @@ import {faAndroid} from '@fortawesome/free-brands-svg-icons'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 function CartWidget (){
     return(
-        <div className='carrito' style={{fontSize:"2em", background:"grey", padding: "6px",borderRadius: "50px"}}>
+        <div className='carrito' style={{fontSize:"30px",  padding: "6px"}}>
         9<FontAwesomeIcon icon= {faShoppingCart} />
         </div>
     )
