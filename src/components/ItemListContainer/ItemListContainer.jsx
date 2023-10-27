@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+
+
 function ItemListContainer() {
   const [detail, setDetail] = useState({});
   let { id } = useParams();
@@ -8,10 +10,22 @@ function ItemListContainer() {
     "electronics",
     "jewelery",
     "men's clothing",
-    "women's clothing"
-  ] 
+    "women's clothing",
+  ];
+
+
   useEffect(() => {
-    fetch(!id? "https://fakestoreapi.com/products/" : "https://fakestoreapi.com/products/category/" + categories[id])
+    console.log("Hola");
+
+    return () => {};
+  }, []);
+
+  useEffect(() => {
+    fetch(
+      !id
+        ? "https://fakestoreapi.com/products/"
+        : "https://fakestoreapi.com/products/category/" + categories[id]
+    )
       .then((response) => {
         return response.json();
       })
@@ -34,14 +48,14 @@ function ItemListContainer() {
         gap: "10px",
       }}
     >
+
       {detail.length > 0
         ? detail.map((e) => {
             return (
               <div
-              key={e.id}
+                key={e.id}
                 className="contenedor"
                 style={{
-                  
                   marginTop: "10px",
                   flexDirection: "column",
 
@@ -60,24 +74,27 @@ function ItemListContainer() {
                   Nombre: {e.title}
                 </h1>
 
-                <img style={{objectFit: "cover" ,width: "100px" }} src={e.image} alt="" />
+                <img
+                  style={{ objectFit: "cover", width: "100px" }}
+                  src={e.image}
+                  alt=""
+                />
                 <div className="detalleBtn">
-                  <Link to={`/detail/${e.id}`}
+                  <Link
+                    to={`/detail/${e.id}`}
                     style={{
-                      
                       textDecoration: "none",
                       color: "black",
                       marginTop: 30,
                       boxShadow: "0 0 5px grey",
                       border: "1px solid grey",
                       borderRadius: "5px",
-                      padding: "10px"
+                      padding: "10px",
                     }}
                   >
                     Detalle del producto
                   </Link>
                 </div>
-                
               </div>
             );
           })
