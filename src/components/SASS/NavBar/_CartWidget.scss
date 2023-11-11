@@ -1,0 +1,25 @@
+.carrito{
+    font-size:30px;
+    margin: 0 4vw ;
+     .cart{
+       position: relative;
+
+      .numero{
+        position: absolute;
+        top: -5px;
+        left: 50px;
+        
+        
+        font-size: 20px;
+      
+       
+      }
+           
+       
+    
+       display: flex;
+       flex-direction: row-reverse;
+       align-items: center;
+       justify-content: center;
+     }
+}

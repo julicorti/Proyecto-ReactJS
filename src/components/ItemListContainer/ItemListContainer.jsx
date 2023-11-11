@@ -1,105 +1,59 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import ItemList from "./ItemList";
+import "../SASS/style.css";
+import {
+    getFirestore,
+    collection,
+    getDocs,
+    query,
+    where,
+  } from "firebase/firestore";
+const ItemListContainer = (props) =>{
+    const [detail, setData] = useState([]);
 
-
-function ItemListContainer() {
-  const [detail, setDetail] = useState({});
-  let { id } = useParams();
-  const categories = [
-    "electronics",
-    "jewelery",
-    "men's clothing",
-    "women's clothing",
-  ];
-
-
-  useEffect(() => {
-    console.log("Hola");
-
-    return () => {};
-  }, []);
-
-  useEffect(() => {
-    fetch(
-      !id
-        ? "https://fakestoreapi.com/products/"
-        : "https://fakestoreapi.com/products/category/" + categories[id]
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setDetail(data);
+    const { id } = useParams();
+    useEffect(() => {
+      const querydb = getFirestore();
+      const queryCollection = collection(querydb, "Products");
+  
+      getDocs(queryCollection).then((res) => {
+        let productos = res.docs.map((product) => ({
+          id: product.id,
+          ...product.data(),
+        }));
+        if (id) {
+          setData(
+            productos.filter((producto) => {
+              return producto.categoryId == id;
+            })
+          );
+        } else {
+          setData(productos);
+        }
       });
-  }, [id]);
-  return (
-    <div
-      className="pagina"
-      style={{
-        height: "100%",
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "row",
-        display: "flex",
-        background: "#F5F5F5",
-        flexWrap: "wrap",
-        gap: "10px",
-      }}
-    >
+    }, [id]);
+    return(
+        <div className="filtro-vista">
+          <h3 >Productos </h3>
+        <div className="filtro-cards">
+       
 
-      {detail.length > 0
-        ? detail.map((e) => {
-            return (
-              <div
-                key={e.id}
-                className="contenedor"
-                style={{
-                  marginTop: "10px",
-                  flexDirection: "column",
-
-                  display: "flex",
-                  justifyContent: "space-around",
-                  alignItems: "center",
-                  height: "400px",
-                  width: "300px",
-                  borderRadius: 6,
-                  background: "white",
-                  boxShadow: "0 0 5px grey",
-                }}
-              >
-                <h2>Id: {e.id}</h2>
-                <h1 style={{ textAlign: "center", fontSize: "20px" }}>
-                  Nombre: {e.title}
-                </h1>
-
-                <img
-                  style={{ objectFit: "cover", width: "100px" }}
-                  src={e.image}
-                  alt=""
-                />
-                <div className="detalleBtn">
-                  <Link
-                    to={`/detail/${e.id}`}
-                    style={{
-                      textDecoration: "none",
-                      color: "black",
-                      marginTop: 30,
-                      boxShadow: "0 0 5px grey",
-                      border: "1px solid grey",
-                      borderRadius: "5px",
-                      padding: "10px",
-                    }}
-                  >
-                    Detalle del producto
-                  </Link>
-                </div>
-              </div>
-            );
-          })
-        : ""}
-    </div>
-  );
+   
+          {detail.length > 0
+            ? detail.map((e) => {
+                return (
+                  <ItemList
+                    image={e.image}
+                    id={e.id}
+                    name={e.name}
+                    stock={e.stock}
+                  />
+                );
+              })
+            : "No hay Stock"}
+        </div>
+      </div>
+    );
 }
 export default ItemListContainer;

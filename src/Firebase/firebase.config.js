@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { collection, doc, getDoc, getDocs, getFirestore } from "firebase/firestore";
+import {  doc, getDoc, getDocs, getFirestore } from "firebase/firestore";
 
 // import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -19,7 +19,7 @@ const firebaseConfig = {
 };
 const getProduct = async () => {
   const db = getFirestore();
-  const itemsCollection = collection(db, "Products");
+  const itemsCollection = doc(db, "Products", "Oa3JxeLXTsXMJCn1rrtu");
   const snapshot = await getDocs(itemsCollection);
   if (snapshot.exists()) {
     return {

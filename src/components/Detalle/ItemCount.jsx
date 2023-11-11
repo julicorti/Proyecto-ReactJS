@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-const Boton = () => {
-  const [count, setCount] = useState(0);
+const Boton = (props) => {
+  
   const sumar = () => {
-    setCount(count + 1);
+    props.setCount(props.count + 1);
   };
   const restar = () => {
-    setCount(count - 1);
+    props.setCount(props.count - 1);
   
   };
   return (
@@ -25,7 +25,7 @@ const Boton = () => {
         }}>
       
       <button style={{ fontSize: 25 ,outline:"none" ,border: "none", backgroundColor: "white",width: 30, height: 30, display: "flex", justifyContent: "center",alignItems: "center"}} onClick={sumar}>+</button>
-      <h1 style={{fontSize: 25}}>{count}</h1>
+      <span style={{fontSize: 25}}>{props.count}</span>
       <button style={{fontSize: 30 , outline:"none" ,border: "none",backgroundColor: "white",width: 30, height: 30, display: "flex", alignItems: "center"}} onClick={restar}>-</button>
     </div>
   );

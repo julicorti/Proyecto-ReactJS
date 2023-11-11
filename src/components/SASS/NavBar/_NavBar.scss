@@ -1,0 +1,39 @@
+.container {
+
+  display: flex;
+height: 100%;
+  -webkit-box-shadow: 0px 7px 14px -6px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 7px 14px -6px rgba(66, 68, 90, 1);
+  box-shadow: 0px 7px 14px -6px rgba(66, 68, 90, 1);
+
+  align-items: center;
+  .container-fluid {
+    text-align: center;
+    height: 70px;
+ 
+    background-color: rgb(255, 255, 255);
+
+    a {
+      color: black;
+      text-decoration: none;
+      padding: 10px;
+      &:hover{
+        background-color: black;
+        color: azure;
+      }
+  
+    }
+
+    ul {
+      width: 100%;
+      list-style: none;
+      text-align: center;
+
+      li {
+        font-size: 30px;
+        display: flex;
+        justify-content: space-evenly;
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+.filtro-vista{
+    height: 92vh;
+    display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  backdrop-filter: blur(6px);
+  background-image: url("../image/fondoM.webp");
+  background-size: cover;
+  &::before {
+    content: "";
+    inset: 0;
+    position: absolute;
+    z-index: -1;
+
+    backdrop-filter: blur(9px);
+  }
+  h3{
+    font-size: 80px;
+  }
+  width: 100%;
+  .filtro-cards{
+    overflow-y: scroll;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    height: 70vh;
+    background-color: rgb(255, 255, 255);
+    width: 70vw;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 2px 0px 33px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 2px 0px 33px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 0px 33px 0px rgba(0,0,0,0.75);
+   
+    .caja-detalle {
+      -webkit-box-shadow: -1px -1px 25px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: -1px -1px 25px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: -1px -1px 25px 0px rgba(0, 0, 0, 0.75);
+      font-family: Poppins, sans-serif;
+      height: 40vh;
+      width: 20vw;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 10px;
+      background-color: rgb(255, 255, 255);
+  
+      img {
+        width: 13vw;
+        background-size: cover;
+    
+      }
+      .contenido {
+        height: 10vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 20vw;
+      }
+    }
+  }
+  }
