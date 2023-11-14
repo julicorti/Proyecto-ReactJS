@@ -1,30 +1,30 @@
-import { useParams } from "react-router-dom"
-import "../SASS/style.css";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Item from "./Item";
-const ItemList = (props) =>{
-    const { id, name, categoryId, image, stock} = useParams();
-    return(
+import "../SASS/style.css";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
+const ItemListContainer = (props) => {
+  const [detail, setData] = useState([...props.productos]);
+  useEffect(() => {
+    setData(props.productos);
+  }, [props.productos]);
 
-        <div className="caja-detalle">
-    
-        <h1>
-         {props.name}
-         
-        </h1>
-
-        <img
-         
-          src={props.image}
-          alt=""
-        />
-        <div className="contenido">
-        <Link style={{textDecoration: "none"}} to={`/detail/${props.id}`}><Item /></Link>
-      <h2>Stock: {props.stock}</h2>
-      </div>
-</div>
-
-
-    );
-}
-export default ItemList;
+  return (
+    <>
+      {detail.length > 0
+        ? detail.map((e) => {
+            return (
+              <Item image={e.image} id={e.id} name={e.name} stock={e.stock} />
+            );
+          })
+        : "No hay Stock"}
+    </>
+  );
+};
+export default ItemListContainer;

@@ -20,7 +20,7 @@ box-shadow: -1px 3px 25px 6px rgba(125,124,125,1);
   }
 
   .contenedorProds{
-  
+    gap: 10px;
     height: 50vh;
     border-radius: 10px;
     overflow-y: scroll;
@@ -56,7 +56,7 @@ box-shadow: -1px 3px 25px 6px rgba(125,124,125,1);
   .productos{
 height: 90.7vh;
     .contenedorProds{
-      width:60vw;
+      width:70vw;
     }
   }
 }

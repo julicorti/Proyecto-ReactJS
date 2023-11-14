@@ -3,6 +3,7 @@
   width: 100%;
   display: flex;
   justify-content: space-evenly;
+  background-color: blue;
   align-items: center;
   flex-direction: column;
   background-image: url("../image/local.jpg");
@@ -52,7 +53,7 @@
   }
 }
 .cardElec {
-  width: 300px;
+  width: 400px;
   height: 40vh;
   display: flex;
   justify-content: center;
@@ -69,5 +70,12 @@
     box-shadow: -2px 0px 33px 14px rgba(168, 168, 168, 0.75);
     -webkit-box-shadow: -2px 0px 33px 14px rgba(168, 168, 168, 0.75);
     -moz-box-shadow: -2px 0px 33px 14px rgba(168, 168, 168, 0.75);
+  }
+}
+@media(max-width: 1930px){
+  .eleccion{
+    .cartasE{
+      height: 60vh;
+    }
   }
 }

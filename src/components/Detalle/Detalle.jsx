@@ -19,8 +19,8 @@ function Detalle() {
     <>
     
   
-
-       <ItemDetail id={data.id} name={data.name} image={data.image} price={data.price} description={data.description}/>
+      
+       <ItemDetail stock={data.stock} id={data.id} name={data.name} image={data.image} price={data.price} description={data.description}/>
    
        </>
    

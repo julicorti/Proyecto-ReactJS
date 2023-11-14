@@ -1,4 +1,4 @@
-import CartContext from "../../context/CartContext";
+import {CartContext} from "../../context/CartContext";
 import ItemDetail from "../Detalle/ItemDetail";
 import React, { useContext, useEffect, useState } from "react";
 import Prods from "../Productos/Productos";

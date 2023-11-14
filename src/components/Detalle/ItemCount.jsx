@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 const Boton = (props) => {
   
   const sumar = () => {
-    props.setCount(props.count + 1);
+    props.setCount(props.count + 1 <= props.stock ? props.count + 1 : props.count);
   };
   const restar = () => {
-    props.setCount(props.count - 1);
+    props.setCount(props.count>0?props.count - 1:0);
   
   };
   return (

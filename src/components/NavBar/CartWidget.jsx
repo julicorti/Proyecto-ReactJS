@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import CartContext from '../../context/CartContext';
+import {CartContext} from '../../context/CartContext';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
  import { useContext } from 'react';
 import Boton from '../Detalle/ItemCount';

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import image from "../image/blazer (1).png";
-import ItemList from "./ItemList";
+import ItemList from "./Item";
+import ItemListContainer from "./ItemListContainer";
 import { useParams } from "react-router-dom";
 import CardE from "./CardElec";
 
@@ -22,21 +23,21 @@ export const Landing = ({ texto }) => {
     const querydb = getFirestore();
     const queryCollection = collection(querydb, "Products");
 
-    getDocs(queryCollection).then((res) => {
-      let productos = res.docs.map((product) => ({
-        id: product.id,
-        ...product.data(),
-      }));
-      if (id) {
-        setData(
-          productos.filter((producto) => {
-            return producto.categoryId == id;
-          })
-        );
-      } else {
-        setData(productos);
-      }
-    });
+    // getDocs(queryCollection).then((res) => {
+    //   let productos = res.docs.map((product) => ({
+    //     id: product.id,
+    //     ...product.data(),
+    //   }));
+    //   if (id) {
+    //     setData(
+    //       productos.filter((producto) => {
+    //         return producto.categoryId == id;
+    //       })
+    //     );
+    //   } else {
+    //     setData(productos);
+    //   }
+    // });
   }, [id]);
 
   return (
@@ -44,34 +45,18 @@ export const Landing = ({ texto }) => {
       <div className="contenedor-inicio">
         <div className="contenido-inicio">
           <h1>Sneakers Shop</h1>
-          <button className="boton">Comprar Ahora</button>
+          <a href="#bajar" className="boton">Comprar Ahora</a>
         </div>
         <img src={image} alt="" />
         <div className="triangulo"></div>
         <div className="circulo"></div>
         <div className="circulo-2"></div>
       </div>
-        <div className="contenedor">
-          <h3>Productos</h3>
-        <div className="contenedor-prod">
        
-
-   
-          {detail.length > 0
-            ? detail.map((e) => {
-                return (
-                  <ItemList
-                    image={e.image}
-                    id={e.id}
-                    name={e.name}
-                    stock={e.stock}
-                  />
-                );
-              })
-            : "No hay Stock"}
-        </div>
-      </div>
-      <div className="eleccion">
+        <ItemListContainer > </ItemListContainer>
+    
+          
+      <div id="bajar" className="eleccion">
               <h5>Selecciona la Opcion que desee</h5>
               <div className="cartasE">
               <Link to="/category/0"><CardE name="Mujer"/></Link>

@@ -1,14 +1,23 @@
-import { Link } from "react-router-dom";
-import "../SASS/style.css"
 import { useParams } from "react-router-dom";
-const Item = (props) =>{
-    const { id } = useParams();
-    return(
-        <div className="detalleBtn">
-                 <h1>Ver detalles</h1>
-                </div>
+import "../SASS/style.css";
+import { Link } from "react-router-dom";
+import Item from "./Item";
+const ItemList = (props) => {
+  const { id, name, categoryId, image, stock } = useParams();
+  return (
+    <div className="caja-detalle">
+      <h1>{props.name}</h1>
 
-
-    );
-}
-export default Item;
+      <img src={props.image} alt="" />
+      <div className="contenido">
+        <Link style={{ textDecoration: "none" }} to={`/detail/${props.id}`}>
+          <div className="detalleBtn">
+            <h1>Ver detalles</h1>
+          </div>
+        </Link>
+        <h2>Stock: {props.stock}</h2>
+      </div>
+    </div>
+  );
+};
+export default ItemList;
